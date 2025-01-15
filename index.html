@@ -14,47 +14,78 @@ Week 4 Final - APIs
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <link rel="stylesheet" href="index.css">
+  
+  <link rel="stylesheet" href="main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 
-  <title>Filmania</title>
+  <script src="https://kit.fontawesome.com/83bc4c6e48.js" crossorigin="anonymous"></script>
+
+  <title>FILMANIA</title>
 
 </head>
 
 <body>
 
-  <div id="landing">
-    <div class="container search__container">
-      <div class="row search__row">
-
-        <h1 class="header">FILMANIA</h1>
-        <h3 class="search__title">Search for Available Movies</h3>
-
-        <form action="">
-          
-          <input class="search--input" id="search" type="text" placeholder="Search API...">
-          <button class="search--btn">Search</button>
-
-        </form>
-
-        <div class="image--wrapper">
-
-          <div class="image__container"></div>
-
-          <!-- <div class="movie__info">
-            <div class="movie__info--container">
-              <p class="movie__rating">Rating: </p>
-              <p class="movie__name">Name: </p>
-              <p class="movie__year">Year: </p>
-              <p class="movie__lang">Language: </p>
-              <p class="movie__genre">Genre: </p>
-              <p class="movie__off-site">Official Website: </p>
+  <div class="wrapper">
+    <!-- Logo -->
+    <div class="logo">
+      <div class="container">
+        <p><span>FILM</span>ANIA</p>
+      </div>
+    </div>
+    <!-- End of Logo -->
+    <!-- Search Container -->
+    <div class="search__movie--container">
+      <div class="search__movie--element">
+        <h3 class="search__movie--title">Search Movie API: </h3>
+        <input type="text" class="form__control" placeholder="Search Movie Title ..." id="search__movie--text-box">
+        <!-- List Here -->
+        <div class="search__movie--list" id="search__movie--list">
+          <div class="search__movie--list-item">
+            <div class="search__movie--item-thumbnail">
+              <img src="./assets/GuardiansOfTheGalaxy__Vol2--thumbnail-Small.jpeg" alt="A movie poster">
             </div>
-          </div> -->
+            <div class="search__movie--item-info">
+              <h3>Guardians Of The Galaxy Vol.2</h3>
+              <p>2017</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <!-- End of Search Container -->
 
+    <!-- Result Container -->
+    <div class="container">
+      <div class="result__container">
+        <div class="result__grid" id="result__grid">
+          <!-- Movie Information Here -->
+           <div class="movie__poster">
+            <img src="./assets/GuardiansOfTheGalaxy__Vol2 Medium.jpeg" alt="A movie poster">
+           </div>
+           <div class="movie__info">
+            <h3 class="movie__title">Guardians Of The Galaxy Vol.2</h3>
+            <ul class="movie__misc--info">
+              <li class="movie__year">Year: 2017</li>
+              <li class="movie__rated">Ratings: PG-13</li>
+              <li class="movie__released">Release: 05 May 2017</li>
+            </ul>
+            <p class="movie__genre"><b>Genre: </b>Action, Adventure, Comedy</p>
+            <p class="movie__writer"><b>Writer: </b>James Gunn, Don Abnett, Andy Lanning</p>
+            <p class="movie__actors"><b>Actors: </b>Chris Pratt, Zoe Saldana, Dave Bautista</p>
+            <p class="movie__plot"><b>Plot: </b>The Guardians struggle to keep together as a team while dealing with their personal family issues, notably Star-Lord's encounter with his father, the ambitious celestial being Ego.</p>
+            <p class="movie__language"><b>Language: </b>English</p>
+            <p class="movie__awards"><b><i class="fas fa-award"></i></b> Nominated for 1 Oscar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Result Container -->
+
+  </div>
+  <!-- Movie API Javascript -->
   <script src="./movies.js"></script>
 
 </body>

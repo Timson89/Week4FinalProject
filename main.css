@@ -1,0 +1,282 @@
+/* 
+Timothy Olofson
+January 14th 2025
+Frontend Simplified(FES)
+Week 4 Final - APIs 
+ */
+
+
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+
+:root {
+  --mid-dark-color: #1d1d1d;
+  --dark-color: #171717;
+  --light-dark-color: #292929;
+  --yellow-color: #d4aa11;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+img {
+  width: 100%;
+  display: block;
+}
+.wrapper {
+  background-color: var(--dark-color);
+  min-height: 100vh;
+}
+.wrapper .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Logo */
+
+
+.logo {
+  border-bottom: solid 1px var(--light-dark-color);
+  padding: 1rem;
+}
+.logo p {
+  color: white;
+  font-size: 2rem;
+  font-weight: bolder;
+}
+.logo p span {
+  color: var(--yellow-color);
+}
+
+/* Search Box */
+
+.search__movie--container {
+  background-color: var(--mid-dark-color);
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search__movie--element {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+.search__movie--element h3 {
+  color: white;
+  align-self: center;
+  margin-right: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 500;
+}
+.search__movie--element .form__control {
+  color: var(--light-dark-color);
+  width: 350px;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  bottom: none;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  outline: none;
+}
+.search__movie--list {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  max-height: 500px;
+  overflow-y: scroll;
+  z-index: 10;
+}
+.search__movie--list .search__movie--list-item {
+  background-color: var(--light-dark-color);
+  padding: 0.5rem;
+  border-bottom: solid 1px var(--dark-color);
+  width: calc(350px - 8px);
+  color: white;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+.search__movie--list .search__movie--list-item:hover {
+  background-color: #1f1f1f;
+}
+.search__movie--list-item {
+  display: flex;
+  align-items: center;
+}
+/* Thumbnail */
+
+.search__movie--list::-webkit-scrollbar {
+  width: 8px;
+}
+.search__movie--list::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.search__movie--list::-webkit-scrollbar-thumb {
+  background-color: var(--yellow-color);
+  outline: none;
+  border-radius: 1px;
+}
+.search__movie--item-thumbnail img {
+  width: 40px;
+  margin-right: 1rem;
+}
+.search__movie--item-info h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.search__movie--item-info p {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  opacity: 0.6;
+}
+
+/* .Js Related Class */
+
+.hide__search--list {
+  display: none;
+}
+
+/* Movie Result */
+
+.result__container {
+  padding: 3rem 0;
+}
+
+.movie__poster img {
+  max-width: 300px;
+  margin: 0 auto;
+  border: solid 5px white;
+}
+.movie__info {
+  color: white;
+  text-align: center;
+  padding-top: 3rem;
+}
+
+/* Movie Info Stylings */
+
+.movie__title {
+  color: var(--yellow-color);
+  font-size: 2rem;
+}
+.movie__misc--info {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.movie__info .movie__rated {
+  background-color: var(--yellow-color);
+  padding: 0.4rem;
+  margin: 0 0.4rem;
+  border-radius: 3px;
+  font-weight: 600;
+}
+.movie__info .movie__released {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+.movie__info .movie__writer {
+  padding: 0.5rem;
+  margin: 1rem 0;
+}
+.movie__info .movie__genre {
+  background-color: var(--light-dark-color);
+  display: inline-block;
+  padding: 0.5rem;
+  border-radius: 3px;
+}
+.movie__info .movie__plot {
+  max-width: 400px;
+  margin: 1rem auto;
+  text-align: start;
+}
+.movie__info .movie__language {
+  color: var(--yellow-color);
+  font-style: italic;
+}
+.movie__info .movie__awards {
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+.movie__info .movie__awards i {
+  color: var(--yellow-color);
+  margin: 1rem 0.7rem 0 0;
+}
+
+/* Dynamics for Small Smartphones, Large Smartphones, & Tablets */
+
+/* Small Smartphones */
+
+@media(max-width: 450px) {
+
+  .logo p {
+    font-size: 1.4rem;
+  }
+  .search__movie--element .form__control {
+    width: 90%;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+  }
+  .search__movie--element h3 {
+    font-size: 1.3rem;
+  }
+  .search__movie--list {
+    width: 90%;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .search__movie--list .search__movie--list-item {
+    width: 100%;
+  }
+  .movie__misc--info {
+    flex-direction: column;
+  }
+  .movie__misc--info li:nth-child(2) {
+    margin: 0.8rem 0;
+  }
+}
+
+/* Large Smartphones */
+
+@media(min-width: 728px) {
+
+  .search__movie--element {
+    flex-direction: row;
+  }
+  .search__movie--element h3 {
+    margin-bottom: 0;
+  }
+  .result__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .movie__info {
+    text-align: left;
+    padding-top: 0;
+  }
+  .movie__info .movie__misc--info {
+    justify-content: flex-start;
+    padding-left: 0%;
+  }
+  .movie__info .movie__writer {
+    padding-left: 0;
+    margin-left: 0;
+  }
+  .movie__info .movie__plot {
+    padding-left: 0;
+    margin-left: 0;
+  }
+}
