@@ -1,0 +1,133 @@
+/* 
+Timothy Olofson
+January 14th 2025
+Frontend Simplified(FES)
+Week 4 Final - APIs 
+ */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  color: wheat;
+  background-color: #242424e9;
+}
+
+p {
+  font-size: 14px;
+  word-break: break-word;
+}
+
+.hidden {
+  display: none;
+}
+
+form {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  min-width: 100%;
+  display: block;
+  border: solid 10px black;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: 0.34s ease-in-out;
+}
+
+img:hover {
+  transform: scale(1.04);
+}
+
+/* 
+
+SEARCH
+
+*/
+
+.search__container {
+  width: 100%;
+}
+
+.search__row {
+  margin: 24px auto;
+  padding: 16px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  font-size: 40px;
+}
+
+.search__title {
+  
+  margin: 16px auto;
+}
+
+.search--input {
+  font-size: 1.4rem;
+  color: wheat;
+  background-color: #242424;
+  width: 225px;
+  height: 40px;
+  padding: 8px 24px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.search--input:focus-within {
+  box-shadow: 0 0 3px 3px rgb(0, 225, 255);
+}
+
+.search--btn {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: rgb(204, 204, 204);
+  background-color: #242424;
+  width: 125px;
+  height: 40px;
+  padding: 8px 24px;
+  margin-left: 12px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: ease 500ms all;
+}
+.search--btn:hover {
+  color: rgb(255, 255, 255);;
+  background-color: #3d3c3c;
+
+}
+
+.search--btn:active {
+  color: #00fdfd;
+  transform: translate(1px, 1px);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.image--wrapper {
+  width: 100%;
+}
+
+.image__container {
+  width: 90%;
+  margin: 10px auto;
+  place-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 0.4fr));
+  gap: 24px;
+}
