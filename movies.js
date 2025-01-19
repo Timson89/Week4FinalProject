@@ -4,6 +4,9 @@
 // Week 4 Final - APIs
 
 
+// Titles: https://www.omdbapi.com/?s=guardians&page=1&apikey=32abe755
+// Details: https://www.omdbapi.com/?i=tt3896198&apikey=32abe755
+
 const movieSearchBox = document.getElementById('search__movie--text-box');
 const searchList = document.getElementById('search__movie--list');
 const resultGrid = document.getElementById('result__grid');
@@ -16,6 +19,8 @@ async function loadMovies(searchTerm) {
   const res = await fetch(`${URL}`);
   const  data = await res.json();
 
+  // console.log(data.Search)
+
   if (data.Response == 'True') displayMovieList(data.Search);
 }
 
@@ -24,6 +29,8 @@ async function loadMovies(searchTerm) {
 function findMovies() {
 
   let searchTerm = (movieSearchBox.value).trim();
+
+  // console.log(searchTerm);
 
   if (searchTerm.length > 0) {
 
@@ -46,6 +53,9 @@ function displayMovieList(movies) {
     let movieListItem = document.createElement('div');
 
     movieListItem.dataset.id = movies[idx].imdbID;
+
+    // movie id in data-id //
+
     movieListItem.classList.add('search__movie--list-item');
 
     if (movies[idx].Poster != 'N/A')
@@ -54,7 +64,7 @@ function displayMovieList(movies) {
 
     else 
 
-      moviePoster = 'image_not_found.png';
+      moviePoster = './assets/image_not_found.png';
     
     movieListItem.innerHTML = `
     
@@ -74,4 +84,25 @@ function displayMovieList(movies) {
     `;
     searchList.appendChild(movieListItem);
   }
+  loadMovieDetails();
+}
+
+function loadMovieDetails() {
+
+  const searchListMovies = searchList.querySelectorAll('search__movie--list-item');
+
+  searchListMovies.forEach(movie => {
+
+    movie.addEventListener('click', async () => {
+
+      // console.log(movie.dataset.id); //
+
+      searchList.classList.add('hide__search--list');
+      movieSearchBox.value = '';
+      const result = await fetch(`http://www.omdbapi.com/?i=${movie.dataset.id}&apikey=32abe755`);
+      const movieDetails = await result.json();
+      
+      console.log(movieDetails);
+    });
+  });
 }
