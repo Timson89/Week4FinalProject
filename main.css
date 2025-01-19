@@ -90,10 +90,13 @@ img {
   outline: none;
 }
 
-.arrow {
-  
+.search__movie--title {
+  display: flex;
+  align-items: center;
 }
-
+.arrow {
+  display: none;
+}
 .search__movie--list {
   position: absolute;
   right: 0;
@@ -263,6 +266,12 @@ img {
   }
   .search__movie--element h3 {
     margin-bottom: 0;
+  }
+  .arrow {
+    display: block;
+  }
+  .arrow__down {
+    display: none;
   }
   .result__grid {
     display: grid;
