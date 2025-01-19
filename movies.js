@@ -4,8 +4,8 @@
 // Week 4 Final - APIs
 
 
-// Titles: https://www.omdbapi.com/?s=guardians&page=1&apikey=32abe755
-// Details: https://www.omdbapi.com/?i=tt3896198&apikey=32abe755
+// Titles: https://www.omdbapi.com/?s=guardians&page=1&apikey=32abe755 dfa6e870
+// Details: https://www.omdbapi.com/?i=tt3896198&apikey=32abe755 dfa6e8701
 
 const movieSearchBox = document.getElementById('search__movie--text-box');
 const searchList = document.getElementById('search__movie--list');
@@ -13,9 +13,9 @@ const resultGrid = document.getElementById('result__grid');
 
 // Load Movies from API //
 
-async function loadMovies(searchTerm) {
+async function loadMovies(searchTerm){
 
-  const URL = `https://www.omdbapi.com/?s=${searchTerm}&page=1&apikey=32abe755`;
+  const URL = `https://www.omdbapi.com/?s=${searchTerm}&page=1&apikey=dfa6e870`;
   const res = await fetch(`${URL}`);
   const  data = await res.json();
 
@@ -26,32 +26,32 @@ async function loadMovies(searchTerm) {
 
 // Search Box //
 
-function findMovies() {
+function findMovies(){
 
   let searchTerm = (movieSearchBox.value).trim();
 
   // console.log(searchTerm);
 
-  if (searchTerm.length > 0) {
+  if (searchTerm.length > 0){
 
     searchList.classList.remove('hide__search--list'); 
     loadMovies(searchTerm);
 
   } else {
+
       searchList.classList.add('hide__search--list');
   }
 }
 
 // Movie List Dropdown //
 
-function displayMovieList(movies) {
+function displayMovieList(movies){
 
   searchList.innerHTML = '';
 
-  for ( let idx = 0; idx < movies.length; idx++ ) {
+  for ( let idx = 0; idx < movies.length; idx++ ){
 
     let movieListItem = document.createElement('div');
-
     movieListItem.dataset.id = movies[idx].imdbID;
 
     // movie id in data-id //
@@ -64,15 +64,11 @@ function displayMovieList(movies) {
 
     else 
 
-      moviePoster = './assets/image_not_found.png';
+      moviePoster = 'No-Image-Placeholder.png';
     
     movieListItem.innerHTML = `
     
-      <div class="search__movie--item-thumbnail">
-
-        <img src="${moviePoster}">
-
-      </div>
+      <div class="search__movie--item-thumbnail"><img src="${moviePoster}"></div>
 
       <div class="search__movie--item-info">
 
@@ -87,9 +83,9 @@ function displayMovieList(movies) {
   loadMovieDetails();
 }
 
-function loadMovieDetails() {
+function loadMovieDetails(){
 
-  const searchListMovies = searchList.querySelectorAll('search__movie--list-item');
+  const searchListMovies = searchList.querySelectorAll('.search__movie--list-item');
 
   searchListMovies.forEach(movie => {
 
@@ -99,10 +95,50 @@ function loadMovieDetails() {
 
       searchList.classList.add('hide__search--list');
       movieSearchBox.value = '';
-      const result = await fetch(`http://www.omdbapi.com/?i=${movie.dataset.id}&apikey=32abe755`);
+      const result = await fetch(`https://omdbapi.com/?i=${movie.dataset.id}&apikey=dfa6e870`);
       const movieDetails = await result.json();
       
-      console.log(movieDetails);
+      // console.log(movieDetails);
+
+      displayMovieDetails(movieDetails);
     });
   });
 }
+
+function displayMovieDetails(details) {
+
+  resultGrid.innerHTML = `
+  
+    <div class="movie__poster"><img src="${(details.Poster != 'N/A') ? details.Poster : 'No-Image-Placeholder.png'}" alt="A movie poster"></div>
+    
+    <div class="movie__info">
+
+      <h3 class="movie__title">${details.Title}</h3>
+
+      <ul class="movie__misc--info">
+
+        <li class="movie__year">Year: ${details.Year}</li>
+        <li class="movie__rated">Rating: ${details.Rated}</li>
+        <li class="movie__released">Released: ${details.Released}</li>
+
+      </ul>
+
+      <p class="movie__genre"><b>Genre: </b>${details.Genre}</p>
+      <p class="movie__writer"><b>Writer: </b>${details.Writer}</p>
+      <p class="movie__actors"><b>Actors: </b>${details.Actors}</p>
+      <p class="movie__plot"><b>Plot: </b>${details.Plot}</p>
+      <p class="movie__language"><b>Language: </b>${details.Language}</p>
+      <p class="movie__awards"><b><i class="fas fa-award"></i>Awards: </b>${details.Awards}</p>
+    
+    </div>
+  
+  `; 
+}
+
+window.addEventListener('click', (event) => {
+
+  if (event.target.className != 'form__control'){
+
+    searchList.classList.add('hide__search--list');
+  }
+});

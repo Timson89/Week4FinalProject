@@ -89,6 +89,11 @@ img {
   border-bottom-left-radius: 3px;
   outline: none;
 }
+
+.arrow {
+  
+}
+
 .search__movie--list {
   position: absolute;
   right: 0;
